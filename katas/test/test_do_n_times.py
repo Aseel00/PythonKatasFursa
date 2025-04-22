@@ -1,6 +1,6 @@
 import unittest
 import random
-from PythonKatasFursa.katas.do_n_times import   do_n_times
+from katas from do_n_times
 
 
 class TestDoNTimes(unittest.TestCase):
