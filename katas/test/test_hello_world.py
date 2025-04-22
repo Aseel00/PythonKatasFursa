@@ -1,5 +1,5 @@
 import unittest
-from katas import hello_world
+from PythonKatasFursa.katas.hello_world import hello_world
 
 
 class TestHelloWorld(unittest.TestCase):
