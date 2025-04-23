@@ -1,4 +1,4 @@
-def longest_common_prefix(strs):
+def longest_common(strs):
     """
     Finds the longest common prefix in a list of strings.
 
