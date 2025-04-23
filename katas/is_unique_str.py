@@ -2,19 +2,27 @@ def is_unique(string):
     """
     Checks if a string has all unique characters (case-insensitive).
 
+
+
     Args:
         string: the input string
 
     Returns:
         True if all characters are unique, False otherwise
     """
+    letters=[]
+    for letter in string:
+        if letter in letters:
+            return False
+        letters.append(letter)
+
     return True
 
 
 if __name__ == '__main__':
-    test1 = "Hello"
+    test1 = "hello"
     test2 = "World"
-    test3 = "Python"
+    test3 = "PythonO"
     test4 = "Unique"
 
     print(f'"{test1}" has all unique characters: {is_unique(test1)}')  # Should be False (has repeated 'l')
