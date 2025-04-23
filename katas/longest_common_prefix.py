@@ -8,7 +8,22 @@ def longest_common_prefix(strs):
     Returns:
         the longest common prefix, or an empty string if none exists
     """
-    return ""
+    res=""
+    if len(strs)==0:
+        return res
+    for i in range(len(strs[0])):
+        for index in range(1,len(strs)):
+            if i >= len(strs[index]):
+                return res
+            elif strs[index][i] != strs[0][i]:
+                return res
+        res+=strs[0][i]
+    return res
+
+
+
+
+
 
 
 if __name__ == '__main__':
