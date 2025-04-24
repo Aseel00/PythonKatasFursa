@@ -6,6 +6,14 @@ def reduce_array(numbers):
     Args:
         numbers: the list of integers to modify
     """
+    res=[]
+    for i in range(len(numbers)-1,0,-1):
+        diff=numbers[i]-numbers[i-1]
+        numbers[i]=diff
+
+
+
+
     pass
 
 
