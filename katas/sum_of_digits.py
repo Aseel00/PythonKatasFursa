@@ -1,3 +1,6 @@
+from curses.ascii import isdigit
+
+
 def sum_of_digits(input_str):
     """
     Calculates the sum of all digits in the given string.
@@ -8,7 +11,13 @@ def sum_of_digits(input_str):
     Returns:
         the sum of all digits in the string
     """
-    return 0
+    count=0
+    for char in input_str:
+        if char.isdigit():
+            count+=int(char)
+    return count
+
+
 
 
 if __name__ == '__main__':
