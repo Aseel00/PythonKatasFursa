@@ -31,7 +31,18 @@ def group_test_cases(test_case_group_sizes):
         a list of lists, where each inner list contains the indices of test cases
         that are grouped together
     """
-    return []
+    groups = []
+    size_to_indices = {}
+
+    for i, size in enumerate(test_case_group_sizes):
+        size_to_indices.setdefault(size, []).append(i)
+
+    for size, indices in size_to_indices.items():
+        # split the indices list into chunks of 'size'
+        for i in range(0, len(indices), size):
+            groups.append(indices[i:i + size])
+
+    return groups
 
 
 if __name__ == '__main__':

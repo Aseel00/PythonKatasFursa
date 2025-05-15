@@ -1,7 +1,16 @@
 import json
 from typing import Any
 
-
+def merge_dicts(d1: dict, d2: dict) -> dict:
+    """
+    Recursively merge d2 into d1.
+    """
+    for key, value in d2.items():
+        if key in d1 and isinstance(d1[key], dict) and isinstance(value, dict):
+            d1[key] = merge_dicts(d1[key], value)
+        else:
+            d1[key] = value
+    return d1
 def json_configs_merge(*json_paths: str) -> dict[str, Any]:
     """
     Merge multiple JSON configuration files into a single dictionary.
@@ -57,11 +66,17 @@ def json_configs_merge(*json_paths: str) -> dict[str, Any]:
     Returns:
         dict: The merged configuration dictionary.
     """
-    return None
+    merged_config: dict[str, Any] = {}
+
+    for path in json_paths:
+        with open(path, 'r', encoding='utf-8') as f:
+            current_config = json.load(f)
+            merged_config = merge_dicts(merged_config, current_config)
+
+    return merged_config
 
 
-
-if __name__ == '__main__':
+#if __name__ == '__main__':
     # Example usage; make sure the files exist for this to run.
-    config = json_configs_merge('default.json', 'production.json', 'us-east-1-production.json')
-    print(config)
+    #config = json_configs_merge('default.json', 'production.json', 'us-east-1-production.json')
+    #print(config)

@@ -10,7 +10,13 @@ def max_profit(prices):
     Returns:
         the maximum profit, or 0 if no profit can be achieved
     """
-    return 0
+    max_profit = 0
+    for i in range(1, len(prices)):
+        # If price today is higher than yesterday, we can profit by buying yesterday and selling today
+        if prices[i] > prices[i - 1]:
+            max_profit += prices[i] - prices[i - 1]
+    return max_profit
+
 
 
 if __name__ == '__main__':

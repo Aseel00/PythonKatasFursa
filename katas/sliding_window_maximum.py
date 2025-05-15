@@ -22,7 +22,28 @@ def max_sliding_window(nums, k):
     Returns:
         A list of the maximum values in each window
     """
-    return []
+    if not nums or k == 0:
+        return []
+
+    result = []
+    dq = []  # simulate deque: stores indices
+
+    for i in range(len(nums)):
+        # Remove indices from the front if they're out of the window
+        if dq and dq[0] < i - k + 1:
+            dq.pop(0)
+
+        # Remove indices from the back if their values are less than nums[i]
+        while dq and nums[dq[-1]] < nums[i]:
+            dq.pop()
+
+        dq.append(i)
+
+        # Add the max value (front of deque) to the result when window is full
+        if i >= k - 1:
+            result.append(nums[dq[0]])
+
+    return result
 
 
 if __name__ == '__main__':
